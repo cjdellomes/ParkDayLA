@@ -1,4 +1,6 @@
-/*function initialize() {
+/*var key = AIzaSyBHWfPAX_LlOeOHHt2vJbj3y9nOMmL2WXU;
+
+function initialize() {
   var pyrmont = new google.maps.LatLng(-33.8665, 151.1956);
 
   var map = new google.maps.Map(document.getElementById('map'), {
@@ -35,3 +37,7 @@
 
 // Run the initialize function when the window has finished loading.
 google.maps.event.addDomListener(window, 'load', initialize);*/
+
+$ ("#park-button").click(function () {
+  alert("I got a click");
+});
