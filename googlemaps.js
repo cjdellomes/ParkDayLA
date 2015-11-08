@@ -10,6 +10,7 @@ function initialize() {
   markers = [];
   $("#info").hide();
 
+
   map = new google.maps.Map(document.getElementById('googleMap'), {
       center : pyrmont,
       zoom : 15
@@ -41,6 +42,7 @@ function callback(results, status) {
 function attachListener(marker, result) {
   marker.addListener('click', function() {
     map.setCenter(marker.getPosition());
+    $("#parking-info").empty();
     $("#lat").text(result.geometry.location.lat);
     $("#long").text(result.geometry.location.lng);
     $("#info").show();
