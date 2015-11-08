@@ -19,7 +19,7 @@ $(function () {
 					
 				}
 				if(outputResult.length === 0) {
-					console.log("Result not found");
+					console.log("There is no meter at this location");
 				}
 			});
 	})
