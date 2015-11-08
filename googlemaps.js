@@ -8,6 +8,7 @@ function initialize() {
   var geocoder = new google.maps.Geocoder();
 
   markers = [];
+  $("#info").hide();
 
   map = new google.maps.Map(document.getElementById('googleMap'), {
       center : pyrmont,
@@ -42,10 +43,7 @@ function attachListener(marker, result) {
     map.setCenter(marker.getPosition());
     $("#lat").text(result.geometry.location.lat);
     $("#long").text(result.geometry.location.lng);
-    $("marker-name").append(marker.title);
-    $("#info").html("<span class='input-group-btn' id='more-info'>"+
-          "<button class = 'btn btn-default' type = 'button'  id = 'more-info'>More Info </button>"+
-        "</span>");
+    $("#info").show();
   });
 }
 
