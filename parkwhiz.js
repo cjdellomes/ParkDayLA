@@ -9,12 +9,18 @@ $(function () {
 				console.log(result);
 				console.log('Blue Whale'.includes('Blue'))
 				console.log(result[0].street_address)
+				var searchResult = $("#address").val().toUpperCase();
+				outputResult = []
 				for (var i = 0; i < result.length; i++) {
-					if(result[i].street_address.includes($("#search-term").val().toUpperCase())) {
+					if(result[i].street_address.includes(searchResult)) {
 						console.log(result[i].street_address);
+						outputResult.push(result[i].street_address);
 					}
 					
-				};
+				}
+				if(outputResult.length === 0) {
+					console.log("Result not found");
+				}
 			});
 	})
 })
