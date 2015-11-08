@@ -52,8 +52,8 @@ $(function () {
 		console.log("more-info was clicked");
 		$.getJSON(
 			"https://parking.api.smgov.net/lots/"
-			).done(function(result)) {
+			).done(function(result) {
 			console.log(result);
-		}
+		})
 	})
 })
