@@ -48,6 +48,43 @@ $(function () {
 			});
 	})
 
+
+
+	$("#lat").bind("DOMNodeInserted",function(){
+	$("#more-info").show()
+    $.getJSON(
+    	"https://parking.api.smgov.net/lots/"
+    	).done(function(result){
+    		var lat = $("#lat").text()
+			var longvar = $("#long").text()
+			longvar = longvar.slice(0,8);
+			lat = lat.slice(0,6);
+			console.log(lat);
+			console.log(longvar);
+			var smcLat;
+			var smcLong;
+			var testList = [];
+			for (var i = 0; i < result.length; i++) {
+				smcLat = String(result[i].latitude);
+				smcLong = String(result[i].longitude);
+				if(smcLat.slice(0,6) === lat &&  smcLong.slice(0,8) === longvar) {
+					testList.push(1)
+				}
+
+			}
+			
+			if(testList.length === 0) {
+				$("#more-info").hide();
+				
+			}
+
+    	})
+	});
+
+
+
+
+
 	$("#more-info").click(function () {
 		
 		console.log("more-info was clicked");
