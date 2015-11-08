@@ -1,10 +1,13 @@
 var map;
 var service;
 var infowindow;
+var markers;
 
 function initialize() {
   var pyrmont = new google.maps.LatLng(34.024212,-118.496475);
   var geocoder = new google.maps.Geocoder();
+
+  markers = [];
 
   map = new google.maps.Map(document.getElementById('googleMap'), {
       center : pyrmont,
@@ -17,15 +20,27 @@ function initialize() {
 }
 
 function callback(results, status) {
+  markers = [];
   if (status === google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
       var marker = new google.maps.Marker({
         map : map,
-        position : results[i].geometry.location
+        position : results[i].geometry.location,
+        title : results[i].name
       });
+      markers.push(marker);
     }
   }
+  for (var j = 0; j < markers.length; j++){
+    attachListener(markers[j]);
+  }
+}
+
+function attachListener(marker) {
+  marker.addListener('click', function() {
+    map.setCenter(marker.getPosition());
+  });
 }
 
 function geocodeAddress(geocoder, resultsMap) {
