@@ -18,14 +18,31 @@
 
 <body>
 	<div class="container">
-   	<div class="row">
+      	<div class="row">
         <h1><font color = "white">ParkDayLA! </font></h1>
     	<div class="input-group input-group-lg">
-  		<span class="input-group-addon" id="park-button" value='Geocode'>Park Me!</span>
-  		<input type="text" class="form-control" placeholder="Give Address!" aria-describedby="sizing-addon1" id ="address">
+  			<span class="input-group-btn" id="park-button">
+  				<button class = "btn btn-default" type = "button"  id = "park-button">Park Me! </button>
+  			</span>
+  			<input type="text" class="form-control" placeholder="Give Address!" aria-describedby="sizing-addon1" id ="address">
+
       	</div>
-      	<div id="googleMap" style="width:500px;height:380px;"></div>
-    </div>
+      	<br></br>
+      	<div class="row">
+  		<div class="col-sm-8">
+			<h3><font color = "white">Map </font></h3>
+			<div id="googleMap" style="width:750px;height:500px;"></div>
+			<br></br>
+		</div>
+
+  		<div class="col-sm-4">
+			<h3><font color = "white">Result!</font></h3>
+			<div class="panel panel-default">
+      <div class="panel-body">Result!</div>
+			</div>
+      </div>
+  		</div>
+		</div>
   	</div>
   <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
