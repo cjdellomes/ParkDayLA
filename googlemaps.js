@@ -81,7 +81,7 @@ function geocodeAddress(geocoder, resultsMap) {
       var request = {
         location : results[0].geometry.location,
         radius : '500',
-        query : 'parking'
+        query : 'public parking'
       }
       var service = new google.maps.places.PlacesService(resultsMap);
       service.textSearch(request, callback);

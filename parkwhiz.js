@@ -49,7 +49,7 @@ $(function () {
 	})
 
 	$("#more-info").click(function () {
-		$("#parking-info").empty()
+		
 		console.log("more-info was clicked");
 		$.getJSON(
 			"https://parking.api.smgov.net/lots/"
@@ -67,10 +67,7 @@ $(function () {
 				smcLat = String(result[i].latitude);
 				smcLong = String(result[i].longitude);
 				if(smcLat.slice(0,6) === lat &&  smcLong.slice(0,8) === longvar) {
-					$("#parking-info").append(	"<h4>Address: </h4>" +
-												"<p>" + result[i].name+ "</p>" +
-												"<p>"+ result[i].street_address+ "</p>" +
-												"<p> Santa Monica, CA "+result[i].zip_code+"</p>" +
+					$("#parking-info").append(
 												"<hr> <h4>Parking Availability</h4>" +
 												"<p> There are "+result[i].available_spaces+" available spaces</p>")
 					$("#info").hide();
