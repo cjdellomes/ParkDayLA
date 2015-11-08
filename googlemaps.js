@@ -46,6 +46,19 @@ function attachListener(marker, result) {
     $("#lat").text(result.geometry.location.lat);
     $("#long").text(result.geometry.location.lng);
     $("#info").show();
+    $("#parking-info").append("<h4>" + result.name + "</h4>");
+    $("#parking-info").append("<p>" + result.formatted_address + "</p>");
+  });
+}
+
+function mainMarkerAttachListener(marker, result) {
+  marker.addListener('click', function() {
+    map.setCenter(marker.getPosition());
+    $("#parking-info").empty();
+    $("#lat").text(result.geometry.location.lat);
+    $("#long").text(result.geometry.location.lng);
+    $("#info").show();
+    $("#parking-info").append("<p>" + result.formatted_address + "</p>");
   });
 }
 
@@ -54,6 +67,17 @@ function geocodeAddress(geocoder, resultsMap) {
   geocoder.geocode({'address' : address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
+      var pinColor = "66CD00";
+      var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
+        new google.maps.Size(21, 34),
+        new google.maps.Point(0,0),
+        new google.maps.Point(10, 34));
+      var marker = new google.maps.Marker({
+        map : resultsMap,
+        position : results[0].geometry.location,
+        icon : pinImage
+      })
+      mainMarkerAttachListener(marker, results[0]);
       var request = {
         location : results[0].geometry.location,
         radius : '500',
