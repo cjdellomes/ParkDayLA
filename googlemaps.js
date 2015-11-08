@@ -33,13 +33,15 @@ function callback(results, status) {
     }
   }
   for (var j = 0; j < markers.length; j++){
-    attachListener(markers[j]);
+    attachListener(markers[j], results[j]);
   }
 }
 
-function attachListener(marker) {
+function attachListener(marker, result) {
   marker.addListener('click', function() {
     map.setCenter(marker.getPosition());
+    $("#lat").text(result.geometry.location.lat);
+    $("#long").text(result.geometry.location.lng);
   });
 }
 
